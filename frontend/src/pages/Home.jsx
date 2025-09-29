@@ -6,7 +6,8 @@ import {
   VStack,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import heroImage from "../assets/images/hero.jpg";
 import Navbar from "../components/Navbar";
 
@@ -16,6 +17,9 @@ const MotionHeading = motion.create(Heading);
 const MotionButton = motion.create(Button);
 
 const Home = () => {
+  const heroRef = useRef(null);
+  const isInView = useInView(heroRef, { once: false, margin: "-100px" });
+
   // Color mode values for Hero Section
   const overlayBg = useColorModeValue(
     "rgba(230, 249, 237, 0.85)", // green.50 with opacity
@@ -95,6 +99,7 @@ const Home = () => {
 
         {/* Hero Section - Integrated directly */}
         <MotionBox
+          ref={heroRef}
           position="relative"
           flex="1"
           w="full"
@@ -103,7 +108,7 @@ const Home = () => {
           justifyContent="center"
           overflow="hidden"
           initial="hidden"
-          animate="visible"
+          animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
           {/* Background Image with Blur and Overlay */}
