@@ -1,21 +1,26 @@
 import {
+  ArrowBackIcon,
+  ArrowForwardIcon,
+  EmailIcon,
+  PhoneIcon,
+} from "@chakra-ui/icons";
+import {
   Box,
-  Container,
-  Heading,
-  Text,
-  Flex,
   Button,
-  useColorModeValue,
-  Image,
+  Container,
+  Flex,
+  Heading,
   HStack,
-  VStack,
-  Link,
   Icon,
+  Image,
+  Link,
+  Text,
+  useColorModeValue,
+  VStack,
 } from "@chakra-ui/react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import { ArrowBackIcon, ArrowForwardIcon, EmailIcon, PhoneIcon } from "@chakra-ui/icons";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { Leaf } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 // Import instructor images
 import instructor1 from "../assets/images/instructors/instr-1-compressed.jpeg";
@@ -40,7 +45,8 @@ const instructorsData = [
     image: instructor1,
     email: "pilates@studiox.com",
     phone: "+1 (555) 123-4567",
-    description: "Expert pilates instructors with over 10 years of experience. Our masters focus on proper form and personalized training to help you achieve your fitness goals safely and effectively.",
+    description:
+      "Expert pilates instructors with over 10 years of experience. Our masters focus on proper form and personalized training to help you achieve your fitness goals safely and effectively.",
   },
   {
     id: 2,
@@ -48,7 +54,8 @@ const instructorsData = [
     image: instructor2,
     email: "yoga@studiox.com",
     phone: "+1 (555) 234-5678",
-    description: "Certified yoga practitioners guiding you through mindful movements and breathing techniques. Experience the perfect balance of strength and flexibility with our expert yoga instructors.",
+    description:
+      "Certified yoga practitioners guiding you through mindful movements and breathing techniques. Experience the perfect balance of strength and flexibility with our expert yoga instructors.",
   },
   {
     id: 3,
@@ -56,7 +63,8 @@ const instructorsData = [
     image: instructor3,
     email: "fitness@studiox.com",
     phone: "+1 (555) 345-6789",
-    description: "Professional fitness trainers dedicated to helping you transform your physique. Our trainers combine modern exercise science with personalized attention for optimal results.",
+    description:
+      "Professional fitness trainers dedicated to helping you transform your physique. Our trainers combine modern exercise science with personalized attention for optimal results.",
   },
   {
     id: 4,
@@ -64,7 +72,8 @@ const instructorsData = [
     image: instructor4,
     email: "dance@studiox.com",
     phone: "+1 (555) 456-7890",
-    description: "Passionate dance instructors bringing rhythm and movement to your fitness journey. Join our classes to enjoy the perfect blend of cardio workout and artistic expression.",
+    description:
+      "Passionate dance instructors bringing rhythm and movement to your fitness journey. Join our classes to enjoy the perfect blend of cardio workout and artistic expression.",
   },
   {
     id: 5,
@@ -72,19 +81,22 @@ const instructorsData = [
     image: instructor5,
     email: "wellness@studiox.com",
     phone: "+1 (555) 567-8901",
-    description: "Holistic wellness coaches focusing on your mind-body connection. Our coaches provide guidance on nutrition, recovery, and mental well-being alongside your physical practice.",
+    description:
+      "Holistic wellness coaches focusing on your mind-body connection. Our coaches provide guidance on nutrition, recovery, and mental well-being alongside your physical practice.",
   },
 ];
 
 // Custom navigation button component
 const NavButton = ({ direction, onClick }) => {
   const bgColor = useColorModeValue("rgba(255,255,255,0.7)", "rgba(0,0,0,0.7)");
-  
+
   return (
     <Button
       onClick={onClick}
       bg={bgColor}
-      _hover={{ bg: useColorModeValue("rgba(255,255,255,0.9)", "rgba(0,0,0,0.9)") }}
+      _hover={{
+        bg: useColorModeValue("rgba(255,255,255,0.9)", "rgba(0,0,0,0.9)"),
+      }}
       color={useColorModeValue("green.800", "green.200")}
       borderRadius="md"
       px={6}
@@ -96,7 +108,9 @@ const NavButton = ({ direction, onClick }) => {
       justifyContent="center"
       backdropFilter="blur(4px)"
       transition="all 0.3s ease"
-      aria-label={direction === "prev" ? "Previous instructor" : "Next instructor"}
+      aria-label={
+        direction === "prev" ? "Previous instructor" : "Next instructor"
+      }
     >
       {direction === "prev" ? (
         <>
@@ -125,18 +139,21 @@ const Instructors = () => {
   const contentBgColor = useColorModeValue("green.50", "green.800"); // Light green background for content
   const headingColor = useColorModeValue("green.800", "green.100");
   const textColor = useColorModeValue("green.800", "green.200");
-  const buttonBg = useColorModeValue("transparent", "transparent");
-  const buttonColor = useColorModeValue("green.800", "green.300"); 
-  const buttonHoverBg = useColorModeValue("green.100", "#030903");
+
+  const buttonColor = useColorModeValue("green.800", "green.300");
 
   const nextSlide = () => {
     setDirection(1);
-    setCurrentSlide((prev) => (prev === instructorsData.length - 1 ? 0 : prev + 1));
+    setCurrentSlide((prev) =>
+      prev === instructorsData.length - 1 ? 0 : prev + 1
+    );
   };
 
   const prevSlide = () => {
     setDirection(-1);
-    setCurrentSlide((prev) => (prev === 0 ? instructorsData.length - 1 : prev - 1));
+    setCurrentSlide((prev) =>
+      prev === 0 ? instructorsData.length - 1 : prev - 1
+    );
   };
 
   // Animation variants
@@ -144,12 +161,12 @@ const Instructors = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { duration: 0.8 }
+      transition: { duration: 0.8 },
     },
     exit: {
       opacity: 0,
-      transition: { duration: 0.6 }
-    }
+      transition: { duration: 0.6 },
+    },
   };
 
   const contentVariants = {
@@ -192,9 +209,18 @@ const Instructors = () => {
   }, [isInView, currentSlide]);
 
   // Create decorative elements for the carousel
-  const DecorativeElement = ({ size, top, left, right, bottom, delay, duration, rotate }) => {
+  const DecorativeElement = ({
+    size,
+    top,
+    left,
+    right,
+    bottom,
+    delay,
+    duration,
+    rotate,
+  }) => {
     const elementColor = useColorModeValue("green.100", "green.700");
-    
+
     return (
       <Box
         as={motion.div}
@@ -205,15 +231,15 @@ const Instructors = () => {
         right={right}
         bottom={bottom}
         initial={{ opacity: 0, scale: 0 }}
-        animate={{ 
-          opacity: 0.7, 
-          scale: 1, 
+        animate={{
+          opacity: 0.7,
+          scale: 1,
           rotate: rotate || 0,
-          transition: { 
-            delay, 
-            duration, 
-            ease: "easeOut" 
-          } 
+          transition: {
+            delay,
+            duration,
+            ease: "easeOut",
+          },
         }}
       >
         <Icon as={Leaf} color={elementColor} boxSize={size} />
@@ -222,26 +248,75 @@ const Instructors = () => {
   };
 
   return (
-    <Box 
-      id="instructors" 
+    <Box
+      id="instructors"
       ref={sectionRef}
-      height="100vh" 
-      width="100%" 
-      position="relative" 
+      height="100vh"
+      width="100%"
+      position="relative"
       overflow="hidden"
       display="flex"
       alignItems="center"
       justifyContent="center"
       bg={bgColor}
     >
-      <Container maxW="1140px" h="100%" position="relative" display="flex" alignItems="center" justifyContent="center">
+      <Container
+        maxW="1140px"
+        h="100%"
+        position="relative"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
         {/* Decorative elements */}
-        <DecorativeElement size="4" top="15%" left="5%" delay={0.2} duration={1.2} rotate={-15} />
-        <DecorativeElement size="6" top="10%" right="15%" delay={0.5} duration={1.5} rotate={20} />
-        <DecorativeElement size="5" bottom="15%" left="10%" delay={0.8} duration={1.3} rotate={45} />
-        <DecorativeElement size="4" bottom="20%" right="8%" delay={0.3} duration={1.4} rotate={-30} />
-        <DecorativeElement size="3" top="40%" left="2%" delay={0.7} duration={1.1} rotate={15} />
-        <DecorativeElement size="3" bottom="35%" right="4%" delay={0.4} duration={1.2} rotate={-10} />
+        <DecorativeElement
+          size="4"
+          top="15%"
+          left="5%"
+          delay={0.2}
+          duration={1.2}
+          rotate={-15}
+        />
+        <DecorativeElement
+          size="6"
+          top="10%"
+          right="15%"
+          delay={0.5}
+          duration={1.5}
+          rotate={20}
+        />
+        <DecorativeElement
+          size="5"
+          bottom="15%"
+          left="10%"
+          delay={0.8}
+          duration={1.3}
+          rotate={45}
+        />
+        <DecorativeElement
+          size="4"
+          bottom="20%"
+          right="8%"
+          delay={0.3}
+          duration={1.4}
+          rotate={-30}
+        />
+        <DecorativeElement
+          size="3"
+          top="40%"
+          left="2%"
+          delay={0.7}
+          duration={1.1}
+          rotate={15}
+        />
+        <DecorativeElement
+          size="3"
+          bottom="35%"
+          right="4%"
+          delay={0.4}
+          duration={1.2}
+          rotate={-10}
+        />
 
         {/* Carousel Controls - Indicators on the right */}
         <VStack
@@ -295,8 +370,8 @@ const Instructors = () => {
             position="relative"
           >
             {/* Left Column (Image) */}
-            <Box 
-              w={{ base: "100%", md: "42%" }} 
+            <Box
+              w={{ base: "100%", md: "42%" }}
               h={{ base: "350px", md: "100%" }}
               position="relative"
               display="flex"
@@ -321,7 +396,7 @@ const Instructors = () => {
                 borderLeft="2px solid"
                 borderColor={buttonColor}
               />
-              
+
               <Box
                 position="absolute"
                 bottom="15px"
@@ -384,7 +459,7 @@ const Instructors = () => {
                 bg={useColorModeValue("green.100", "green.700")}
                 opacity="0.15"
               />
-              
+
               <Box
                 position="absolute"
                 bottom="-40px"
@@ -395,7 +470,7 @@ const Instructors = () => {
                 bg={useColorModeValue("green.100", "green.700")}
                 opacity="0.1"
               />
-              
+
               <Box
                 position="absolute"
                 top="30%"
@@ -414,7 +489,7 @@ const Instructors = () => {
                 position="relative"
                 zIndex="1"
               >
-                <MotionHeading 
+                <MotionHeading
                   as="h2"
                   size={{ base: "lg", md: "xl" }}
                   color={headingColor}
@@ -451,16 +526,27 @@ const Instructors = () => {
                 </MotionText>
 
                 {/* Contact Information */}
-                <VStack align="flex-start" spacing={2} mb={6} maxW={{ base: "100%", md: "90%" }}>
+                <VStack
+                  align="flex-start"
+                  spacing={2}
+                  mb={6}
+                  maxW={{ base: "100%", md: "90%" }}
+                >
                   <HStack spacing={2} color={textColor}>
                     <EmailIcon color={buttonColor} />
-                    <MotionText fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                    <MotionText
+                      fontSize={{ base: "sm", md: "md" }}
+                      fontWeight="medium"
+                    >
                       {instructorsData[currentSlide].email}
                     </MotionText>
                   </HStack>
                   <HStack spacing={2} color={textColor}>
                     <PhoneIcon color={buttonColor} />
-                    <MotionText fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                    <MotionText
+                      fontSize={{ base: "sm", md: "md" }}
+                      fontWeight="medium"
+                    >
                       {instructorsData[currentSlide].phone}
                     </MotionText>
                   </HStack>
@@ -469,14 +555,14 @@ const Instructors = () => {
                 <MotionButton
                   as={Link}
                   variant="outline"
-                  color="green.800"
-                  borderColor="green.700"
+                  color={useColorModeValue("green.800", "green.200")}
+                  borderColor={useColorModeValue("green.700", "green.400")}
                   borderWidth="2px"
-                  bg={buttonBg}
+                  bg={useColorModeValue("transparent", "rgba(3, 9, 3, 0.7)")}
                   _hover={{
-                    bg: buttonHoverBg,
+                    bg: useColorModeValue("green.100", "green.500"),
                     transform: "translateY(-2px)",
-                    color: useColorModeValue("green.900", "white"),
+                    color: useColorModeValue("green.900", "#030903"),
                   }}
                   transition="all 0.3s ease"
                   px={7}
