@@ -16,9 +16,9 @@ import { useEffect, useRef } from 'react';
 import { FaCheck, FaStar } from 'react-icons/fa';
 
 // Create motion components
-const MotionBox = motion(Box);
-const MotionFlex = motion(Flex);
-const MotionContainer = motion(Container);
+const MotionBox = motion.create(Box);
+const MotionFlex = motion.create(Flex);
+const MotionContainer = motion.create(Container);
 
 const Pricing = () => {
   // Refs for intersection observer

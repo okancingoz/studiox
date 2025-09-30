@@ -23,10 +23,10 @@ import { FaLeaf, FaUser, FaEnvelope, FaPhone, FaComment } from "react-icons/fa";
 import contactImage from "../assets/images/contact/contact.jpg";
 
 // Create motion components
-const MotionBox = motion(Box);
-const MotionFlex = motion(Flex);
-const MotionImage = motion(Image);
-const MotionButton = motion(Button);
+const MotionBox = motion.create(Box);
+const MotionFlex = motion.create(Flex);
+const MotionImage = motion.create(Image);
+const MotionButton = motion.create(Button);
 
 const Contact = () => {
   // Form state
@@ -60,8 +60,7 @@ const Contact = () => {
   const subtleTextColor = useColorModeValue("green.600", "green.400");        // Form labels, captions
   const accentColor = useColorModeValue("green.500", "green.400");            // Accent/brand color
   
-  // For backward compatibility
-  const headingColor = primaryHeadingColor;
+  // No backward compatibility needed as we've updated all instances
   
   // UI Colors
   const buttonBgColor = useColorModeValue("green.500", "green.400");
@@ -390,23 +389,23 @@ const Contact = () => {
                         value={formState.firstName}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        color="green.600"
+                        color={bodyTextColor}
                         pl="2.5rem"
                         _focus={{
-                          borderColor: "green.500",
+                          borderColor: accentColor,
                           boxShadow: "0 0 0 1px var(--chakra-colors-green-500)"
                         }}
-                        _placeholder={{ color: "green.300" }}
+                        _placeholder={{ color: subtleTextColor }}
                       />
                     </InputGroup>
                     <FormErrorMessage>{errors.firstName}</FormErrorMessage>
                   </FormControl>
 
                   <FormControl isInvalid={errors.lastName && touched.lastName}>
-                    <FormLabel htmlFor="lastName" color={headingColor}>Last Name</FormLabel>
+                    <FormLabel htmlFor="lastName" color={secondaryHeadingColor}>Last Name</FormLabel>
                     <InputGroup>
                       <InputLeftElement pointerEvents="none">
-                        <Icon as={FaUser} color="green.400" />
+                        <Icon as={FaUser} color={accentColor} />
                       </InputLeftElement>
                       <Input
                         id="lastName"
@@ -418,13 +417,13 @@ const Contact = () => {
                         value={formState.lastName}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        color="green.600"
+                        color={bodyTextColor}
                         pl="2.5rem"
                         _focus={{
-                          borderColor: "green.500",
+                          borderColor: accentColor,
                           boxShadow: "0 0 0 1px var(--chakra-colors-green-500)"
                         }}
-                        _placeholder={{ color: "green.300" }}
+                        _placeholder={{ color: subtleTextColor }}
                       />
                     </InputGroup>
                     <FormErrorMessage>{errors.lastName}</FormErrorMessage>
@@ -432,10 +431,10 @@ const Contact = () => {
                 </Flex>
 
                 <FormControl isInvalid={errors.email && touched.email}>
-                  <FormLabel htmlFor="email" color={headingColor}>Email</FormLabel>
+                  <FormLabel htmlFor="email" color={secondaryHeadingColor}>Email</FormLabel>
                   <InputGroup>
                     <InputLeftElement pointerEvents="none">
-                      <Icon as={FaEnvelope} color="green.400" />
+                      <Icon as={FaEnvelope} color={accentColor} />
                     </InputLeftElement>
                     <Input
                       id="email"
@@ -448,23 +447,23 @@ const Contact = () => {
                       value={formState.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      color="green.600"
+                      color={bodyTextColor}
                       pl="2.5rem"
                       _focus={{
-                        borderColor: "green.500",
+                        borderColor: accentColor,
                         boxShadow: "0 0 0 1px var(--chakra-colors-green-500)"
                       }}
-                      _placeholder={{ color: "green.300" }}
+                      _placeholder={{ color: subtleTextColor }}
                     />
                   </InputGroup>
                   <FormErrorMessage>{errors.email}</FormErrorMessage>
                 </FormControl>
 
                 <FormControl isInvalid={errors.phone && touched.phone}>
-                  <FormLabel htmlFor="phone" color={headingColor}>Phone Number</FormLabel>
+                  <FormLabel htmlFor="phone" color={secondaryHeadingColor}>Phone Number</FormLabel>
                   <InputGroup>
                     <InputLeftElement pointerEvents="none">
-                      <Icon as={FaPhone} color="green.400" />
+                      <Icon as={FaPhone} color={accentColor} />
                     </InputLeftElement>
                     <Input
                       id="phone"
@@ -477,23 +476,23 @@ const Contact = () => {
                       value={formState.phone}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      color="green.600"
+                      color={bodyTextColor}
                       pl="2.5rem"
                       _focus={{
-                        borderColor: "green.500",
+                        borderColor: accentColor,
                         boxShadow: "0 0 0 1px var(--chakra-colors-green-500)"
                       }}
-                      _placeholder={{ color: "green.300" }}
+                      _placeholder={{ color: subtleTextColor }}
                     />
                   </InputGroup>
                   <FormErrorMessage>{errors.phone}</FormErrorMessage>
                 </FormControl>
 
                 <FormControl isInvalid={errors.message && touched.message}>
-                  <FormLabel htmlFor="message" color={headingColor}>Message</FormLabel>
+                  <FormLabel htmlFor="message" color={secondaryHeadingColor}>Message</FormLabel>
                   <InputGroup>
                     <InputLeftElement pointerEvents="none">
-                      <Icon as={FaComment} color="green.400" mt="0.5rem" />
+                      <Icon as={FaComment} color={accentColor} mt="0.5rem" />
                     </InputLeftElement>
                     <Textarea
                       id="message"
@@ -505,14 +504,14 @@ const Contact = () => {
                       value={formState.message}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      color="green.600"
+                      color={bodyTextColor}
                       pl="2.5rem"
                       rows={5}
                       _focus={{
-                        borderColor: "green.500",
+                        borderColor: accentColor,
                         boxShadow: "0 0 0 1px var(--chakra-colors-green-500)"
                       }}
-                      _placeholder={{ color: "green.300" }}
+                      _placeholder={{ color: subtleTextColor }}
                     />
                   </InputGroup>
                   <FormErrorMessage>{errors.message}</FormErrorMessage>

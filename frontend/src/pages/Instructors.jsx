@@ -25,12 +25,12 @@ import instructor4 from "../assets/images/instructors/instr-4-compressed.jpeg";
 import instructor5 from "../assets/images/instructors/instr-5-compressed.jpeg";
 
 // Create motion components
-const MotionBox = motion(Box);
-const MotionFlex = motion(Flex);
-const MotionHeading = motion(Heading);
-const MotionText = motion(Text);
-const MotionButton = motion(Button);
-const MotionImage = motion(Image);
+const MotionBox = motion.create(Box);
+const MotionFlex = motion.create(Flex);
+const MotionHeading = motion.create(Heading);
+const MotionText = motion.create(Text);
+const MotionButton = motion.create(Button);
+const MotionImage = motion.create(Image);
 
 // Instructors data
 const instructorsData = [
