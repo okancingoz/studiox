@@ -18,7 +18,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { MdDarkMode, MdLightMode } from "react-icons/md";
+import { Moon, Sun } from "lucide-react";
 
 // Import React Router components - these should be wrapped in a Router provider
 import { Link as RouterLink, useLocation } from "react-router-dom";
@@ -202,16 +202,18 @@ const Navbar = () => {
             <MotionBox whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <IconButton
                 size="md"
-                icon={colorMode === "light" ? <MdDarkMode /> : <MdLightMode />}
-                aria-label="Toggle color mode"
+                icon={colorMode === "light" ? <Moon size={20} /> : <Sun size={20} />}
+                aria-label={colorMode === "light" ? "Switch to dark mode" : "Switch to light mode"}
                 variant="ghost"
-                color={useColorModeValue("green.600", "green.300")}
+                color={useColorModeValue("green.800", "green.200")}
                 _hover={{
                   bg: useColorModeValue("green.100", "green.800"),
-                  color: useColorModeValue("green.800", "green.100"),
+                  color: useColorModeValue("green.900", "white"),
                 }}
                 onClick={toggleColorMode}
                 rounded="lg"
+                minW="44px"
+                height="44px"
               />
             </MotionBox>
 
@@ -224,9 +226,10 @@ const Navbar = () => {
               <IconButton
                 size="md"
                 icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-                aria-label="Toggle navigation menu"
+                aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+                aria-expanded={isOpen}
                 variant="ghost"
-                color={useColorModeValue("green.600", "green.300")}
+                color={useColorModeValue("green.800", "green.200")}
                 _hover={{
                   bg: useColorModeValue("green.100", "green.800"),
                   color: useColorModeValue("green.800", "green.100"),

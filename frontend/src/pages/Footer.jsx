@@ -13,7 +13,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
-import { FaInstagram, FaTwitter, FaFacebook, FaLinkedin, FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
+import { Instagram, Twitter, Facebook, Linkedin, MapPin, Phone, Mail } from "lucide-react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -46,7 +46,7 @@ const Footer = () => {
   const sectionBgColor = useColorModeValue("green.50", "#030903");
   const borderColor = useColorModeValue("green.100", "green.700");
   const mapBorderColor = useColorModeValue("green.300", "green.700");
-  const iconHoverColor = useColorModeValue("green.600", "green.300");
+  const socialIconHoverColor = useColorModeValue("green.800", "green.200");
   const footerBottomBgColor = useColorModeValue("green.700", "#030903");
   
   // Example location for the map (New York City)
@@ -59,10 +59,10 @@ const Footer = () => {
   
   // Social media links
   const socialLinks = [
-    { icon: FaInstagram, label: "Instagram", href: "https://instagram.com" },
-    { icon: FaTwitter, label: "Twitter", href: "https://twitter.com" },
-    { icon: FaFacebook, label: "Facebook", href: "https://facebook.com" },
-    { icon: FaLinkedin, label: "LinkedIn", href: "https://linkedin.com" },
+    { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
+    { icon: Twitter, label: "Twitter", href: "https://twitter.com" },
+    { icon: Facebook, label: "Facebook", href: "https://facebook.com" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
   ];
   
   return (
@@ -155,22 +155,22 @@ const Footer = () => {
                 {/* Contact Information */}
                 <VStack spacing={3} align={{ base: "center", lg: "flex-start" }} pt={2}>
                   <HStack>
-                    <Icon as={FaMapMarkerAlt} color={accentColor} boxSize={5} />
+                    <Icon as={MapPin} color={accentColor} boxSize={5} />
                     <Text fontSize="md" color={bodyTextColor}>
                       123 Fitness Avenue, New York, NY 10001
                     </Text>
                   </HStack>
                   
                   <HStack>
-                    <Icon as={FaPhone} color={accentColor} boxSize={5} />
-                    <Link href="tel:+12125551234" color={bodyTextColor} _hover={{ color: accentColor }}>
+                    <Icon as={Phone} color={accentColor} boxSize={5} />
+                    <Link href="tel:+12125551234" color={useColorModeValue("green.800", "green.200")} _hover={{ color: accentColor }} fontWeight="medium" aria-label="Call us at +1 (212) 555-1234">
                       +1 (212) 555-1234
                     </Link>
                   </HStack>
                   
                   <HStack>
-                    <Icon as={FaEnvelope} color={accentColor} boxSize={5} />
-                    <Link href="mailto:info@studiox.com" color={bodyTextColor} _hover={{ color: accentColor }}>
+                    <Icon as={Mail} color={accentColor} boxSize={5} />
+                    <Link href="mailto:info@studiox.com" color={useColorModeValue("green.800", "green.200")} _hover={{ color: accentColor }} fontWeight="medium" aria-label="Email us at info@studiox.com">
                       info@studiox.com
                     </Link>
                   </HStack>
@@ -193,10 +193,10 @@ const Footer = () => {
                     >
                       <Icon
                         as={social.icon}
-                        boxSize={6}
-                        color={accentColor}
+                        boxSize={7}
+                        color="green.600"
                         _hover={{
-                          color: iconHoverColor,
+                          color: socialIconHoverColor,
                           transform: "translateY(-2px)",
                         }}
                         transition="all 0.3s ease"

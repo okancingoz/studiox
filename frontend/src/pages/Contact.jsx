@@ -19,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { FaLeaf, FaUser, FaEnvelope, FaPhone, FaComment } from "react-icons/fa";
+import { Leaf, User, Mail, Phone, MessageSquare } from "lucide-react";
 import contactImage from "../assets/images/contact/contact.jpg";
 
 // Create motion components
@@ -63,8 +63,6 @@ const Contact = () => {
   // No backward compatibility needed as we've updated all instances
   
   // UI Colors
-  const buttonBgColor = useColorModeValue("green.500", "green.400");
-  const buttonHoverBgColor = useColorModeValue("green.600", "green.500");
   const borderColor = useColorModeValue("green.300", "green.600");
   
   // Animation effect
@@ -246,7 +244,7 @@ const Contact = () => {
         zIndex="0"
       >
         <Icon
-          as={FaLeaf}
+          as={Leaf}
           w={size}
           h={size}
           color={useColorModeValue("green.400", "green.800")}
@@ -294,7 +292,7 @@ const Contact = () => {
       
       {/* Decorative leaf elements */}
       <Icon
-        as={FaLeaf}
+        as={Leaf}
         position="absolute"
         top="10%"
         right="15%"
@@ -306,7 +304,7 @@ const Contact = () => {
       />
       
       <Icon
-        as={FaLeaf}
+        as={Leaf}
         position="absolute"
         bottom="15%"
         left="10%"
@@ -377,7 +375,7 @@ const Contact = () => {
                     <FormLabel htmlFor="firstName" color={secondaryHeadingColor}>First Name</FormLabel>
                     <InputGroup>
                       <InputLeftElement pointerEvents="none">
-                        <Icon as={FaUser} color="green.400" />
+                        <Icon as={User} color="green.400" />
                       </InputLeftElement>
                       <Input
                         id="firstName"
@@ -405,7 +403,7 @@ const Contact = () => {
                     <FormLabel htmlFor="lastName" color={secondaryHeadingColor}>Last Name</FormLabel>
                     <InputGroup>
                       <InputLeftElement pointerEvents="none">
-                        <Icon as={FaUser} color={accentColor} />
+                        <Icon as={User} color={accentColor} />
                       </InputLeftElement>
                       <Input
                         id="lastName"
@@ -434,7 +432,7 @@ const Contact = () => {
                   <FormLabel htmlFor="email" color={secondaryHeadingColor}>Email</FormLabel>
                   <InputGroup>
                     <InputLeftElement pointerEvents="none">
-                      <Icon as={FaEnvelope} color={accentColor} />
+                      <Icon as={Mail} color={accentColor} />
                     </InputLeftElement>
                     <Input
                       id="email"
@@ -463,7 +461,7 @@ const Contact = () => {
                   <FormLabel htmlFor="phone" color={secondaryHeadingColor}>Phone Number</FormLabel>
                   <InputGroup>
                     <InputLeftElement pointerEvents="none">
-                      <Icon as={FaPhone} color={accentColor} />
+                      <Icon as={Phone} color={accentColor} />
                     </InputLeftElement>
                     <Input
                       id="phone"
@@ -492,7 +490,7 @@ const Contact = () => {
                   <FormLabel htmlFor="message" color={secondaryHeadingColor}>Message</FormLabel>
                   <InputGroup>
                     <InputLeftElement pointerEvents="none">
-                      <Icon as={FaComment} color={accentColor} mt="0.5rem" />
+                      <Icon as={MessageSquare} color={accentColor} mt="0.5rem" />
                     </InputLeftElement>
                     <Textarea
                       id="message"
@@ -519,15 +517,17 @@ const Contact = () => {
 
                 <MotionButton
                   type="submit"
-                  bg={buttonBgColor}
+                  bg="green.600"
                   color="white"
                   size="lg"
                   width="100%"
-                  _hover={{ bg: buttonHoverBgColor }}
+                  minH="48px"
+                  _hover={{ bg: "green.700" }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   transition="all 0.2s ease"
                   mt={4}
+                  aria-label="Submit contact form"
                 >
                   Send Message
                 </MotionButton>

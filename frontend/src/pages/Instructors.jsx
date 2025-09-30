@@ -15,7 +15,7 @@ import {
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ArrowBackIcon, ArrowForwardIcon, EmailIcon, PhoneIcon } from "@chakra-ui/icons";
-import { FaLeaf } from "react-icons/fa";
+import { Leaf } from "lucide-react";
 
 // Import instructor images
 import instructor1 from "../assets/images/instructors/instr-1-compressed.jpeg";
@@ -79,22 +79,24 @@ const instructorsData = [
 // Custom navigation button component
 const NavButton = ({ direction, onClick }) => {
   const bgColor = useColorModeValue("rgba(255,255,255,0.7)", "rgba(0,0,0,0.7)");
-  const textColor = useColorModeValue("green.600", "green.400");
   
   return (
     <Button
       onClick={onClick}
       bg={bgColor}
       _hover={{ bg: useColorModeValue("rgba(255,255,255,0.9)", "rgba(0,0,0,0.9)") }}
-      color={textColor}
+      color={useColorModeValue("green.800", "green.200")}
       borderRadius="md"
-      px={4}
-      py={6}
+      px={6}
+      py={7}
+      minW="48px"
+      height="48px"
       display="flex"
       alignItems="center"
       justifyContent="center"
       backdropFilter="blur(4px)"
       transition="all 0.3s ease"
+      aria-label={direction === "prev" ? "Previous instructor" : "Next instructor"}
     >
       {direction === "prev" ? (
         <>
@@ -122,11 +124,10 @@ const Instructors = () => {
   const bgColor = useColorModeValue("white", "#030903");
   const contentBgColor = useColorModeValue("green.50", "green.800"); // Light green background for content
   const headingColor = useColorModeValue("green.800", "green.100");
-  const textColor = useColorModeValue("green.700", "green.200");
+  const textColor = useColorModeValue("green.800", "green.200");
   const buttonBg = useColorModeValue("transparent", "transparent");
-  const buttonColor = useColorModeValue("green.700", "green.400"); 
+  const buttonColor = useColorModeValue("green.800", "green.300"); 
   const buttonHoverBg = useColorModeValue("green.100", "#030903");
-  const buttonBorderColor = useColorModeValue("green.700", "green.400");
 
   const nextSlide = () => {
     setDirection(1);
@@ -215,7 +216,7 @@ const Instructors = () => {
           } 
         }}
       >
-        <Icon as={FaLeaf} color={elementColor} boxSize={size} />
+        <Icon as={Leaf} color={elementColor} boxSize={size} />
       </Box>
     );
   };
@@ -256,10 +257,10 @@ const Instructors = () => {
             <Box
               key={index}
               as="button"
-              w="10px"
-              h="10px"
+              w="12px"
+              h="12px"
               borderRadius="full"
-              border="1px solid"
+              border="2px solid"
               borderColor={buttonColor}
               bg={index === currentSlide ? buttonColor : "transparent"}
               onClick={() => {
@@ -268,6 +269,9 @@ const Instructors = () => {
               }}
               transition="all 0.25s"
               _hover={{ transform: "scale(1.3)" }}
+              aria-label={`Go to slide ${index + 1}`}
+              role="tab"
+              aria-selected={index === currentSlide}
             />
           ))}
         </VStack>
@@ -465,24 +469,28 @@ const Instructors = () => {
                 <MotionButton
                   as={Link}
                   variant="outline"
-                  color={buttonColor}
-                  borderColor={buttonBorderColor}
-                  borderWidth="1px"
+                  color="green.800"
+                  borderColor="green.700"
+                  borderWidth="2px"
                   bg={buttonBg}
                   _hover={{
                     bg: buttonHoverBg,
                     transform: "translateY(-2px)",
+                    color: useColorModeValue("green.900", "white"),
                   }}
                   transition="all 0.3s ease"
                   px={7}
                   py={5}
+                  minH="48px"
+                  minW="150px"
                   fontSize={{ base: "sm", md: "md" }}
-                  fontWeight="medium"
+                  fontWeight="bold"
                   href="#pricing"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   position="relative"
                   zIndex="2"
+                  aria-label={`Work with ${instructorsData[currentSlide].name}`}
                 >
                   Work With Me
                 </MotionButton>

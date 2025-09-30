@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { useEffect, useRef } from 'react';
-import { FaCheck, FaStar } from 'react-icons/fa';
+import { Check, Star } from 'lucide-react';
 
 // Create motion components
 const MotionBox = motion.create(Box);
@@ -41,9 +41,7 @@ const Pricing = () => {
   const headingColor = primaryHeadingColor;
   const textColor = bodyTextColor;
   const highlightedCardBg = useColorModeValue('green.50', '#030903');
-  const buttonBg = useColorModeValue('green.500', 'green.400');
-  const buttonHoverBg = useColorModeValue('green.600', 'green.500');
-  const buttonHoverBgAlt = useColorModeValue('green.50', '#030903');
+  const buttonHoverBgAlt = useColorModeValue('green.50', 'rgba(0,0,0,0.2)');
   const checkIconColor = useColorModeValue('green.500', 'green.400');
 
   // Animation when component comes into view
@@ -279,7 +277,7 @@ const Pricing = () => {
                 <VStack spacing={4} align="stretch">
                   <HStack>
                     {plan.isRecommended && (
-                      <Icon as={FaStar} color={accentColor} mr={2} />
+                      <Icon as={Star} color={accentColor} mr={2} />
                     )}
                     <Heading size="lg" color={headingColor}>
                       {plan.title}
@@ -302,7 +300,7 @@ const Pricing = () => {
                   <VStack spacing={3} align="stretch" my={2}>
                     {plan.features.map((feature, i) => (
                       <HStack key={i} spacing={3} align="center">
-                        <Icon as={FaCheck} color={checkIconColor} boxSize={3} />
+                        <Icon as={Check} color={checkIconColor} boxSize={3} />
                         <Text fontSize="sm" color={bodyTextColor}>
                           {feature}
                         </Text>
@@ -314,14 +312,15 @@ const Pricing = () => {
                     as={motion.button}
                     mt={6}
                     py={6}
+                    minH="48px"
                     fontWeight="bold"
                     colorScheme={plan.isRecommended ? "green" : "gray"}
-                    bg={plan.isRecommended ? buttonBg : "transparent"}
-                    color={plan.isRecommended ? "white" : accentColor}
+                    bg={plan.isRecommended ? "green.600" : "transparent"}
+                    color={plan.isRecommended ? "white" : "green.800"}
                     border="2px solid"
-                    borderColor={plan.isRecommended ? buttonBg : accentColor}
+                    borderColor={plan.isRecommended ? "green.600" : "green.700"}
                     _hover={{
-                      bg: plan.isRecommended ? buttonHoverBg : buttonHoverBgAlt,
+                      bg: plan.isRecommended ? "green.700" : buttonHoverBgAlt,
                       transform: "translateY(-2px)"
                     }}
                     _active={{
@@ -330,6 +329,7 @@ const Pricing = () => {
                     transition="all 0.2s ease"
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
+                    aria-label={`Select ${plan.title} plan - ${plan.price} ${plan.period}`}
                   >
                     {plan.cta}
                   </Button>
