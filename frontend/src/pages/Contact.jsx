@@ -52,17 +52,19 @@ const Contact = () => {
   // Colors based on theme
   const formBgColor = useColorModeValue("green.50", "green.900");
   const inputBgColor = useColorModeValue("white", "gray.800");
-  const headingColor = useColorModeValue("gray.800", "white");
+  const headingColor = useColorModeValue("green.700", "green.300");
   // Removed unused textColor variable
   const buttonBgColor = useColorModeValue("green.500", "green.400");
   const buttonHoverBgColor = useColorModeValue("green.600", "green.500");
-  const decorativeColor = useColorModeValue("green.100", "green.800");
+  // Removed decorativeColor since we're using inline useColorModeValue
   const borderColor = useColorModeValue("green.300", "green.600");
   
   // Animation effect
   useEffect(() => {
     if (isInView) {
       controls.start("visible");
+    } else {
+      controls.start("hidden");
     }
   }, [controls, isInView]);
   
@@ -239,9 +241,9 @@ const Contact = () => {
           as={FaLeaf}
           w={size}
           h={size}
-          color={decorativeColor}
+          color={useColorModeValue("green.400", "green.800")}
           transform={`rotate(${rotate}deg)`}
-          opacity="0.4"
+          opacity={useColorModeValue("0.25", "0.4")}
         />
       </Box>
     );
@@ -288,9 +290,9 @@ const Contact = () => {
         position="absolute"
         top="10%"
         right="15%"
-        color={useColorModeValue("green.100", "green.800")}
+        color={useColorModeValue("green.400", "green.800")}
         boxSize="4rem"
-        opacity="0.2"
+        opacity={useColorModeValue("0.15", "0.2")}
         transform="rotate(45deg)"
         zIndex="0"
       />
@@ -300,9 +302,9 @@ const Contact = () => {
         position="absolute"
         bottom="15%"
         left="10%"
-        color={useColorModeValue("green.100", "green.800")}
+        color={useColorModeValue("green.400", "green.800")}
         boxSize="3rem"
-        opacity="0.15"
+        opacity={useColorModeValue("0.12", "0.15")}
         transform="rotate(-30deg)"
         zIndex="0"
       />
@@ -311,12 +313,24 @@ const Contact = () => {
         maxW="1140px"
         height="auto"
         display="flex"
+        flexDirection="column"
         alignItems="center"
         px={{ base: 4, md: 6 }}
         position="relative"
         zIndex="1"
         ref={containerRef}
       >
+        <Box textAlign="center" mb={8}>
+          <Heading
+            as="h2"
+            size="2xl"
+            mb={3}
+            color={useColorModeValue("green.800", "green.200")}
+            letterSpacing="tight"
+          >
+            Get In Touch
+          </Heading>
+        </Box>
         
         <MotionFlex
           direction={{ base: "column", lg: "row" }}

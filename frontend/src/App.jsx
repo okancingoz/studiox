@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { About, Contact, Instructors, Pricing } from "./pages";
+import { About, Contact, Instructors, Pricing, Footer } from "./pages";
 import Home from "./pages/Home";
 
 const App = () => {
@@ -10,6 +10,7 @@ const App = () => {
       <Instructors />
       <Pricing />
       <Contact />
+      <Footer />
     </Box>
   );
 };
