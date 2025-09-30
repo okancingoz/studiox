@@ -32,15 +32,22 @@ const Footer = () => {
   // State to track if the map is loaded in the client
   const [isMounted, setIsMounted] = useState(false);
   
-  // Colors based on theme
-  const bgColor = useColorModeValue("white", "gray.900");
-  const textColor = useColorModeValue("gray.800", "gray.100");
-  const accentColor = useColorModeValue("green.500", "green.400");
-  const sectionBgColor = useColorModeValue("green.50", "gray.800");
+  // Colors based on theme - structured for text hierarchy
+  const bgColor = useColorModeValue("white", "#030903");
+  
+  // Text Hierarchy Colors
+  const primaryHeadingColor = useColorModeValue("green.700", "green.100");    // Main headings (h2, h3)
+  const secondaryHeadingColor = useColorModeValue("green.600", "green.200");  // Subheadings (h4)
+  const bodyTextColor = useColorModeValue("green.700", "green.300");          // Body text
+  const subtleTextColor = useColorModeValue("green.600", "green.400");        // Subtle text, captions
+  const accentColor = useColorModeValue("green.500", "green.400");            // Accent/brand color
+  
+  // Other UI Colors
+  const sectionBgColor = useColorModeValue("green.50", "#030903");
   const borderColor = useColorModeValue("green.100", "green.700");
   const mapBorderColor = useColorModeValue("green.300", "green.700");
   const iconHoverColor = useColorModeValue("green.600", "green.300");
-  const footerBottomBgColor = useColorModeValue("green.700", "green.900");
+  const footerBottomBgColor = useColorModeValue("green.700", "#030903");
   
   // Example location for the map (New York City)
   const location = { lat: 40.7128, lng: -74.006 };
@@ -59,7 +66,7 @@ const Footer = () => {
   ];
   
   return (
-    <Box bg={bgColor} color={textColor} position="relative">
+    <Box bg={bgColor} color={bodyTextColor} position="relative">
       {/* Main footer content */}
       <Box py={16} bg={sectionBgColor}>
         <Container maxW="1140px" px={{ base: 4, md: 6 }}>
@@ -120,7 +127,7 @@ const Footer = () => {
               align={{ base: "center", lg: "flex-start" }}
               justify="center"
               p={{ base: 4, lg: 8 }}
-              bg={useColorModeValue("white", "gray.800")}
+              bg={useColorModeValue("white", "#030903")}
               borderRightRadius="lg"
               borderLeftRadius={{ base: "lg", lg: 0 }}
               borderWidth="1px"
@@ -133,13 +140,13 @@ const Footer = () => {
                 <Heading 
                   as="h3" 
                   size="lg"
-                  color={accentColor}
+                  color={primaryHeadingColor}
                   fontWeight="bold"
                   letterSpacing="tight"
                 >
                   StudioX
                 </Heading>
-                <Text fontSize="md" color={useColorModeValue("green.600", "green.300")}>
+                <Text fontSize="md" color={subtleTextColor}>
                   Your premier fitness destination
                 </Text>
                 
@@ -149,21 +156,21 @@ const Footer = () => {
                 <VStack spacing={3} align={{ base: "center", lg: "flex-start" }} pt={2}>
                   <HStack>
                     <Icon as={FaMapMarkerAlt} color={accentColor} boxSize={5} />
-                    <Text fontSize="md" color={useColorModeValue("green.700", "green.300")}>
+                    <Text fontSize="md" color={bodyTextColor}>
                       123 Fitness Avenue, New York, NY 10001
                     </Text>
                   </HStack>
                   
                   <HStack>
                     <Icon as={FaPhone} color={accentColor} boxSize={5} />
-                    <Link href="tel:+12125551234" color={useColorModeValue("green.700", "green.300")} _hover={{ color: accentColor }}>
+                    <Link href="tel:+12125551234" color={bodyTextColor} _hover={{ color: accentColor }}>
                       +1 (212) 555-1234
                     </Link>
                   </HStack>
                   
                   <HStack>
                     <Icon as={FaEnvelope} color={accentColor} boxSize={5} />
-                    <Link href="mailto:info@studiox.com" color={useColorModeValue("green.700", "green.300")} _hover={{ color: accentColor }}>
+                    <Link href="mailto:info@studiox.com" color={bodyTextColor} _hover={{ color: accentColor }}>
                       info@studiox.com
                     </Link>
                   </HStack>
@@ -172,7 +179,7 @@ const Footer = () => {
               
               {/* Social Media Links */}
               <VStack spacing={4} align={{ base: "center", lg: "flex-start" }}>
-                <Heading as="h4" size="md" color={accentColor}>
+                <Heading as="h4" size="md" color={secondaryHeadingColor}>
                   Connect With Us
                 </Heading>
                 
@@ -198,7 +205,7 @@ const Footer = () => {
                   ))}
                 </HStack>
                 
-                <Text fontSize="sm" color={useColorModeValue("green.600", "green.300")} maxW="400px" pt={2}>
+                <Text fontSize="sm" color={subtleTextColor} maxW="400px" pt={2}>
                   Join our community and stay updated with the latest classes, events, and wellness tips.
                 </Text>
               </VStack>
@@ -208,7 +215,7 @@ const Footer = () => {
       </Box>
       
       {/* Copyright Footer */}
-      <Box py={4} bg={footerBottomBgColor} color="white">
+      <Box py={4} bg={footerBottomBgColor} color={useColorModeValue("white", "green.200")}>
         <Container maxW="1140px" px={{ base: 4, md: 6 }}>
           <Flex 
             direction={{ base: "column", md: "row" }} 
@@ -216,14 +223,30 @@ const Footer = () => {
             align="center"
             gap={{ base: 2, md: 0 }}
           >
-            <Text fontSize="sm">
+            <Text fontSize="sm" color={useColorModeValue("white", "green.300")}>
               &copy; {new Date().getFullYear()} StudioX. All rights reserved.
             </Text>
             <HStack spacing={4}>
-              <Link href="#" fontSize="sm" _hover={{ textDecoration: "underline" }}>
+              <Link 
+                href="#" 
+                fontSize="sm" 
+                color={useColorModeValue("white", "green.300")}
+                _hover={{ 
+                  textDecoration: "underline",
+                  color: useColorModeValue("white", "green.100") 
+                }}
+              >
                 Privacy Policy
               </Link>
-              <Link href="#" fontSize="sm" _hover={{ textDecoration: "underline" }}>
+              <Link 
+                href="#" 
+                fontSize="sm" 
+                color={useColorModeValue("white", "green.300")}
+                _hover={{ 
+                  textDecoration: "underline",
+                  color: useColorModeValue("white", "green.100") 
+                }}
+              >
                 Terms of Service
               </Link>
             </HStack>

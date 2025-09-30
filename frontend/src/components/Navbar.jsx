@@ -105,11 +105,11 @@ const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
 
-  const navBg = useColorModeValue("green.50", "gray.900");
+  const navBg = useColorModeValue("green.50", "#030903");
   const navBorder = useColorModeValue("green.200", "gray.600");
 
   // Pre-compute color values for drawer to avoid conditional hook calls
-  const drawerBg = useColorModeValue("green.50", "green.900");
+  const drawerBg = useColorModeValue("green.50", "#030903");
   const drawerBorder = useColorModeValue("green.200", "green.700");
   const drawerCloseColor = useColorModeValue("green.600", "green.300");
   const drawerCloseHoverBg = useColorModeValue("green.100", "green.800");

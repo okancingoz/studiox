@@ -28,14 +28,22 @@ const About = () => {
   const [image1Loaded, setImage1Loaded] = useState(false);
   const [image2Loaded, setImage2Loaded] = useState(false);
 
-  // Color mode values
-  const bgColor = useColorModeValue("white", "green.900");
-  const headingColor = useColorModeValue("green.800", "green.100");
-  const textColor = useColorModeValue("green.700", "green.200");
-  const accentColor = useColorModeValue("green.500", "green.400");
+  // Color mode values - structured for text hierarchy
+  const bgColor = useColorModeValue("white", "#030903");
+  
+  // Text Hierarchy Colors
+  const primaryHeadingColor = useColorModeValue("green.800", "green.100");    // Main headings (h2, h3)
+  const secondaryHeadingColor = useColorModeValue("green.700", "green.200");  // Subheadings (h4)
+  const bodyTextColor = useColorModeValue("green.700", "green.300");          // Body text
+  const subtleTextColor = useColorModeValue("green.600", "green.400");        // Subtle text, quotes
+  const accentColor = useColorModeValue("green.500", "green.400");            // Accent/brand color
+  
+  // For backward compatibility with existing code
+  const headingColor = primaryHeadingColor;
+  const textColor = bodyTextColor;
 
   // Pre-compute conditional hook values
-  const imageBorderColor = useColorModeValue("white", "green.900");
+  const imageBorderColor = useColorModeValue("white", "#030903");
   const placeholder1Bg = useColorModeValue("green.100", "green.700");
   const placeholder2Bg = useColorModeValue("green.200", "green.600");
 
@@ -154,7 +162,7 @@ const About = () => {
                 <MotionHeading
                   as="h3"
                   size={{ base: "md", md: "lg" }}
-                  color={textColor}
+                  color={secondaryHeadingColor}
                   fontWeight="medium"
                   variants={textVariants}
                 >
@@ -205,7 +213,7 @@ const About = () => {
                   </Text>
                   <Text
                     fontSize="xs"
-                    color={textColor}
+                    color={subtleTextColor}
                     mt={1}
                     fontWeight="medium"
                   >

@@ -23,7 +23,7 @@ const Home = () => {
   // Color mode values for Hero Section
   const overlayBg = useColorModeValue(
     "rgba(230, 249, 237, 0.85)", // green.50 with opacity
-    "rgba(6, 42, 21, 0.85)" // green.900 with opacity
+    "rgba(3, 9, 3, 0.85)" // #030903 with opacity
   );
 
   const headingColor = useColorModeValue("green.800", "green.100");

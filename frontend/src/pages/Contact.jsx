@@ -49,14 +49,23 @@ const Contact = () => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
   
-  // Colors based on theme
-  const formBgColor = useColorModeValue("green.50", "green.900");
-  const inputBgColor = useColorModeValue("white", "gray.800");
-  const headingColor = useColorModeValue("green.700", "green.300");
-  // Removed unused textColor variable
+  // Colors based on theme - structured for text hierarchy
+  const formBgColor = useColorModeValue("green.50", "#030903");
+  const inputBgColor = useColorModeValue("white", "#030903");
+  
+  // Text Hierarchy Colors
+  const primaryHeadingColor = useColorModeValue("green.800", "green.100");    // Main headings (h2, h3)
+  const secondaryHeadingColor = useColorModeValue("green.700", "green.200");  // Subheadings (h4)
+  const bodyTextColor = useColorModeValue("green.700", "green.300");          // Body text
+  const subtleTextColor = useColorModeValue("green.600", "green.400");        // Form labels, captions
+  const accentColor = useColorModeValue("green.500", "green.400");            // Accent/brand color
+  
+  // For backward compatibility
+  const headingColor = primaryHeadingColor;
+  
+  // UI Colors
   const buttonBgColor = useColorModeValue("green.500", "green.400");
   const buttonHoverBgColor = useColorModeValue("green.600", "green.500");
-  // Removed decorativeColor since we're using inline useColorModeValue
   const borderColor = useColorModeValue("green.300", "green.600");
   
   // Animation effect
@@ -257,7 +266,7 @@ const Contact = () => {
       alignItems="center"
       position="relative"
       overflow="hidden"
-      bg={useColorModeValue("white", "gray.900")}
+      bg={useColorModeValue("white", "#030903")}
     >
       {/* Background decorative elements */}
       <Box
@@ -267,7 +276,7 @@ const Contact = () => {
         width="300px"
         height="300px"
         borderRadius="full"
-        bg={useColorModeValue("green.50", "green.900")}
+        bg={useColorModeValue("green.50", "#030903")}
         opacity="0.3"
         zIndex="0"
       />
@@ -279,7 +288,7 @@ const Contact = () => {
         width="400px"
         height="400px"
         borderRadius="full"
-        bg={useColorModeValue("green.50", "green.900")}
+        bg={useColorModeValue("green.50", "#030903")}
         opacity="0.3"
         zIndex="0"
       />
@@ -325,7 +334,7 @@ const Contact = () => {
             as="h2"
             size="2xl"
             mb={3}
-            color={useColorModeValue("green.800", "green.200")}
+            color={primaryHeadingColor}
             letterSpacing="tight"
           >
             Get In Touch
@@ -366,7 +375,7 @@ const Contact = () => {
               <VStack spacing={6} align="stretch">
                 <Flex gap={4} direction={{ base: "column", sm: "row" }}>
                   <FormControl isInvalid={errors.firstName && touched.firstName}>
-                    <FormLabel htmlFor="firstName" color={headingColor}>First Name</FormLabel>
+                    <FormLabel htmlFor="firstName" color={secondaryHeadingColor}>First Name</FormLabel>
                     <InputGroup>
                       <InputLeftElement pointerEvents="none">
                         <Icon as={FaUser} color="green.400" />

@@ -26,16 +26,24 @@ const Pricing = () => {
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
   const controls = useAnimation();
 
-  // Colors based on theme
-  const bgColor = useColorModeValue('white', 'gray.800');
+  // Colors based on theme - structured for text hierarchy
+  const bgColor = useColorModeValue('white', '#030903');
   const cardBorderColor = useColorModeValue('gray.200', 'gray.700');
-  const headingColor = useColorModeValue('green.800', 'green.200');
-  const textColor = useColorModeValue('green.700', 'green.300');
-  const accentColor = useColorModeValue('green.500', 'green.400');
-  const highlightedCardBg = useColorModeValue('green.50', 'green.900');
+  
+  // Text Hierarchy Colors
+  const primaryHeadingColor = useColorModeValue('green.800', 'green.100');    // Main headings (h2)
+  const secondaryHeadingColor = useColorModeValue('green.700', 'green.200');  // Subheadings (h3, h4)
+  const bodyTextColor = useColorModeValue('green.700', 'green.300');          // Body text
+  const subtleTextColor = useColorModeValue('green.600', 'green.400');        // Subtle text, captions
+  const accentColor = useColorModeValue('green.500', 'green.400');            // Accent/brand color
+  
+  // For backward compatibility
+  const headingColor = primaryHeadingColor;
+  const textColor = bodyTextColor;
+  const highlightedCardBg = useColorModeValue('green.50', '#030903');
   const buttonBg = useColorModeValue('green.500', 'green.400');
   const buttonHoverBg = useColorModeValue('green.600', 'green.500');
-  const buttonHoverBgAlt = useColorModeValue('green.50', 'green.900');
+  const buttonHoverBgAlt = useColorModeValue('green.50', '#030903');
   const checkIconColor = useColorModeValue('green.500', 'green.400');
 
   // Animation when component comes into view
@@ -150,7 +158,7 @@ const Pricing = () => {
       display="flex" 
       alignItems="center" 
       py={16}
-      bg={useColorModeValue('gray.50', 'gray.900')}
+      bg={useColorModeValue('gray.50', '#030903')}
       position="relative"
       overflow="hidden"
     >
@@ -162,7 +170,7 @@ const Pricing = () => {
         w="300px"
         h="300px"
         borderRadius="full"
-        bg={useColorModeValue("green.50", "green.900")}
+        bg={useColorModeValue("green.50", "#030903")}
         opacity="0.4"
         zIndex="0"
       />
@@ -174,7 +182,7 @@ const Pricing = () => {
         w="500px"
         h="500px"
         borderRadius="full"
-        bg={useColorModeValue("green.50", "green.900")}
+        bg={useColorModeValue("green.50", "#030903")}
         opacity="0.3"
         zIndex="0"
       />
@@ -192,14 +200,14 @@ const Pricing = () => {
           <Heading 
             size="2xl" 
             mb={4} 
-            color={headingColor}
+            color={primaryHeadingColor}
             letterSpacing="tight"
           >
             Pricing Plans
           </Heading>
           <Text 
             fontSize={{ base: "lg", md: "xl" }} 
-            color={accentColor} 
+            color={secondaryHeadingColor} 
             maxW="700px" 
             mx="auto"
             fontWeight="medium"
@@ -283,10 +291,10 @@ const Pricing = () => {
                   </Text>
 
                   <Box py={4}>
-                    <Heading size="2xl" color={plan.isRecommended ? accentColor : headingColor}>
+                    <Heading size="2xl" color={plan.isRecommended ? accentColor : primaryHeadingColor}>
                       {plan.price}
                     </Heading>
-                    <Text fontSize="sm" color={textColor} mt={1}>
+                    <Text fontSize="sm" color={subtleTextColor} mt={1}>
                       {plan.period}
                     </Text>
                   </Box>
@@ -295,7 +303,7 @@ const Pricing = () => {
                     {plan.features.map((feature, i) => (
                       <HStack key={i} spacing={3} align="center">
                         <Icon as={FaCheck} color={checkIconColor} boxSize={3} />
-                        <Text fontSize="sm" color={textColor}>
+                        <Text fontSize="sm" color={bodyTextColor}>
                           {feature}
                         </Text>
                       </HStack>

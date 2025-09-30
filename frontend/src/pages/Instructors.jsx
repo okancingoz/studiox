@@ -119,13 +119,13 @@ const Instructors = () => {
   const autoplayRef = useRef(null);
 
   // Color theme integration with site - matching About section
-  const bgColor = useColorModeValue("white", "gray.900");
+  const bgColor = useColorModeValue("white", "#030903");
   const contentBgColor = useColorModeValue("green.50", "green.800"); // Light green background for content
   const headingColor = useColorModeValue("green.800", "green.100");
   const textColor = useColorModeValue("green.700", "green.200");
   const buttonBg = useColorModeValue("transparent", "transparent");
   const buttonColor = useColorModeValue("green.700", "green.400"); 
-  const buttonHoverBg = useColorModeValue("green.100", "green.900");
+  const buttonHoverBg = useColorModeValue("green.100", "#030903");
   const buttonBorderColor = useColorModeValue("green.700", "green.400");
 
   const nextSlide = () => {
@@ -299,10 +299,10 @@ const Instructors = () => {
               alignItems="center"
               justifyContent="center"
               overflow="hidden"
-              bg={useColorModeValue("green.50", "green.900")}
+              bg={useColorModeValue("green.50", "#030903")}
               bgGradient={useColorModeValue(
                 "linear(to-r, white, green.50)",
-                "linear(to-r, gray.900, green.900)"
+                "linear(to-r, #030903, #030903)"
               )}
             >
               {/* Subtle patterns around the image */}
