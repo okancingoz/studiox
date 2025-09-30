@@ -30,7 +30,6 @@ const navLinks = [
   { name: "Home", path: "#", sectionId: "home" },
   { name: "About", path: "#about", sectionId: "about" },
 
-  { name: "Testimonials", path: "#testimonials", sectionId: "testimonials" },
   { name: "Instructors", path: "#instructors", sectionId: "instructors" },
   { name: "Pricing", path: "#pricing", sectionId: "pricing" },
   { name: "Contact", path: "#contact", sectionId: "contact" },
