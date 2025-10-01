@@ -170,6 +170,7 @@ const Navbar = () => {
             <Link
               as={RouterLink}
               to="/"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               fontSize="2xl"
               fontWeight="bold"
               color={useColorModeValue("green.700", "green.200")}
@@ -202,8 +203,14 @@ const Navbar = () => {
             <MotionBox whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <IconButton
                 size="md"
-                icon={colorMode === "light" ? <Moon size={20} /> : <Sun size={20} />}
-                aria-label={colorMode === "light" ? "Switch to dark mode" : "Switch to light mode"}
+                icon={
+                  colorMode === "light" ? <Moon size={20} /> : <Sun size={20} />
+                }
+                aria-label={
+                  colorMode === "light"
+                    ? "Switch to dark mode"
+                    : "Switch to light mode"
+                }
                 variant="ghost"
                 color={useColorModeValue("green.800", "green.200")}
                 _hover={{
@@ -226,7 +233,9 @@ const Navbar = () => {
               <IconButton
                 size="md"
                 icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-                aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+                aria-label={
+                  isOpen ? "Close navigation menu" : "Open navigation menu"
+                }
                 aria-expanded={isOpen}
                 variant="ghost"
                 color={useColorModeValue("green.800", "green.200")}

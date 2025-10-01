@@ -4,18 +4,90 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="StudioX - Your premier fitness destination offering expert-led yoga, pilates, and fitness training. Join our community for personalized classes, nutrition guidance, and wellness coaching." />
-    <meta name="keywords" content="fitness studio, yoga, pilates, personal training, wellness, StudioX" />
+    <meta
+      name="description"
+      content="StudioX - Your premier fitness destination offering expert-led yoga, pilates, and fitness training. Join our community for personalized classes, nutrition guidance, and wellness coaching."
+    />
+    <meta
+      name="keywords"
+      content="fitness studio, yoga, pilates, personal training, wellness, StudioX"
+    />
     <meta name="author" content="StudioX" />
-    <meta property="og:title" content="StudioX - Premium Fitness & Wellness Center" />
-    <meta property="og:description" content="Expert-led yoga, pilates, and fitness training with personalized attention and comprehensive wellness programs." />
+    <meta
+      property="og:title"
+      content="StudioX - Premium Fitness & Wellness Center"
+    />
+    <meta
+      property="og:description"
+      content="Expert-led yoga, pilates, and fitness training with personalized attention and comprehensive wellness programs."
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://studiox.com" />
     <meta property="og:image" content="/vite.svg" />
+
+    <!-- Theme color for browser chrome -->
+    <meta name="theme-color" content="#22c55e" />
+
     <title>StudioX - Premium Fitness & Wellness Center</title>
+
+    <!-- Preload critical assets for better LCP -->
+    <link
+      rel="preload"
+      href="/src/assets/images/hero.jpg"
+      as="image"
+      type="image/jpeg"
+      fetchpriority="high"
+    />
+
+    <!-- Preconnect to external domains if any -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+    <!-- Inline critical CSS to avoid render blocking (if needed) -->
+    <style>
+      /* Prevent layout shift */
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+      }
+      #root {
+        min-height: 100vh;
+      }
+      /* Loading spinner styles */
+      .app-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: #e6f9ed;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Minimal loading indicator to improve perceived performance -->
+      <div class="app-loading">
+        <div
+          style="
+            width: 40px;
+            height: 40px;
+            border: 4px solid #22c55e;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+          "
+        ></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Add animation for loading spinner -->
+    <style>
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
   </body>
 </html>

@@ -3,6 +3,7 @@ import {
   Button,
   Container,
   Heading,
+  Image,
   VStack,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -111,20 +112,25 @@ const Home = () => {
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
-          {/* Background Image with Blur and Overlay */}
-          <Box
+          {/* Background Image with Blur and Overlay - Optimized */}
+          <Image
+            src={heroImage}
+            alt="StudioX Pilates Studio"
             position="absolute"
             top="0"
             left="0"
             right="0"
             bottom="0"
-            backgroundImage={`url(${heroImage})`}
-            backgroundSize="cover"
-            backgroundPosition="center"
-            backgroundRepeat="no-repeat"
+            width="full"
+            height="full"
+            objectFit="cover"
+            objectPosition="center"
             filter="blur(2px)"
-            transform="scale(1.1)" // Slight scale to avoid blur edge effects
+            transform="scale(1.1)"
             zIndex="-2"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
           />
 
           {/* Color Overlay */}
