@@ -7,9 +7,10 @@ import viteImagemin from "vite-plugin-imagemin";
 export default defineConfig({
   plugins: [
     react({
-      babel: {
-        plugins: [["babel-plugin-react-compiler"]],
-      },
+      // Temporarily disabled React Compiler due to React 19 compatibility issues
+      // babel: {
+      //   plugins: [["babel-plugin-react-compiler"]],
+      // },
     }),
     // Image optimization
     viteImagemin({
